@@ -7,23 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C04372DF298D4FEC00450F96 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04372DE298D4FEC00450F96 /* NetworkManager.swift */; };
+		C04372E1298D5B2200450F96 /* CoctailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04372E0298D5B2200450F96 /* CoctailListViewController.swift */; };
+		C04372E3298D618F00450F96 /* CoctailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04372E2298D618F00450F96 /* CoctailTableViewCell.swift */; };
 		C08657D3298809D800477872 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08657D2298809D800477872 /* AppDelegate.swift */; };
 		C08657D5298809D800477872 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08657D4298809D800477872 /* SceneDelegate.swift */; };
-		C08657D7298809D800477872 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08657D6298809D800477872 /* ViewController.swift */; };
 		C08657DA298809D800477872 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C08657D8298809D800477872 /* Main.storyboard */; };
 		C08657DC298809DA00477872 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C08657DB298809DA00477872 /* Assets.xcassets */; };
 		C08657DF298809DA00477872 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C08657DD298809DA00477872 /* LaunchScreen.storyboard */; };
+		C0B9CD4F298814EE000B5366 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9CD4E298814EE000B5366 /* InformationViewController.swift */; };
+		C0B9CD5B298936A0000B5366 /* Coctail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9CD5A298936A0000B5366 /* Coctail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C04372DE298D4FEC00450F96 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		C04372E0298D5B2200450F96 /* CoctailListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailListViewController.swift; sourceTree = "<group>"; };
+		C04372E2298D618F00450F96 /* CoctailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoctailTableViewCell.swift; sourceTree = "<group>"; };
 		C08657CF298809D800477872 /* TheCoctailsAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheCoctailsAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C08657D2298809D800477872 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C08657D4298809D800477872 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C08657D6298809D800477872 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C08657D9298809D800477872 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C08657DB298809DA00477872 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C08657DE298809DA00477872 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C08657E0298809DA00477872 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0B9CD4E298814EE000B5366 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		C0B9CD5A298936A0000B5366 /* Coctail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coctail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,67 @@
 		C08657D1298809D800477872 /* TheCoctailsAPI */ = {
 			isa = PBXGroup;
 			children = (
-				C08657D2298809D800477872 /* AppDelegate.swift */,
-				C08657D4298809D800477872 /* SceneDelegate.swift */,
-				C08657D6298809D800477872 /* ViewController.swift */,
-				C08657D8298809D800477872 /* Main.storyboard */,
+				C08657E6298809E600477872 /* App */,
+				C08657E729880A0200477872 /* ViewControllers */,
+				C0B9CD55298817EC000B5366 /* Views */,
+				C08657E929880A2600477872 /* Models */,
+				C0B9CD54298817AD000B5366 /* Servises */,
+				C08657E829880A0F00477872 /* Storyboards */,
 				C08657DB298809DA00477872 /* Assets.xcassets */,
-				C08657DD298809DA00477872 /* LaunchScreen.storyboard */,
-				C08657E0298809DA00477872 /* Info.plist */,
 			);
 			path = TheCoctailsAPI;
+			sourceTree = "<group>";
+		};
+		C08657E6298809E600477872 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C08657D2298809D800477872 /* AppDelegate.swift */,
+				C08657D4298809D800477872 /* SceneDelegate.swift */,
+				C08657E0298809DA00477872 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C08657E729880A0200477872 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C04372E0298D5B2200450F96 /* CoctailListViewController.swift */,
+				C0B9CD4E298814EE000B5366 /* InformationViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C08657E829880A0F00477872 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C08657D8298809D800477872 /* Main.storyboard */,
+				C08657DD298809DA00477872 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		C08657E929880A2600477872 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C0B9CD5A298936A0000B5366 /* Coctail.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C0B9CD54298817AD000B5366 /* Servises */ = {
+			isa = PBXGroup;
+			children = (
+				C04372DE298D4FEC00450F96 /* NetworkManager.swift */,
+			);
+			path = Servises;
+			sourceTree = "<group>";
+		};
+		C0B9CD55298817EC000B5366 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C04372E2298D618F00450F96 /* CoctailTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +198,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C08657D7298809D800477872 /* ViewController.swift in Sources */,
 				C08657D3298809D800477872 /* AppDelegate.swift in Sources */,
+				C04372E3298D618F00450F96 /* CoctailTableViewCell.swift in Sources */,
 				C08657D5298809D800477872 /* SceneDelegate.swift in Sources */,
+				C0B9CD4F298814EE000B5366 /* InformationViewController.swift in Sources */,
+				C0B9CD5B298936A0000B5366 /* Coctail.swift in Sources */,
+				C04372E1298D5B2200450F96 /* CoctailListViewController.swift in Sources */,
+				C04372DF298D4FEC00450F96 /* NetworkManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,12 +353,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C5T3VHXRCH;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TheCoctailsAPI/Info.plist;
+				INFOPLIST_FILE = TheCoctailsAPI/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -317,12 +382,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C5T3VHXRCH;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TheCoctailsAPI/Info.plist;
+				INFOPLIST_FILE = TheCoctailsAPI/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
