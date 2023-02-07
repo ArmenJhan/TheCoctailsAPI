@@ -10,7 +10,14 @@ import UIKit
 class InformationViewController: UIViewController {
     
     //MARK: IBOutlets
-    @IBOutlet var imageCoctail: UIImageView!
+    @IBOutlet var imageCoctail: UIImageView! {
+        didSet {
+            imageCoctail.contentMode = .scaleAspectFill
+            imageCoctail.clipsToBounds = true
+            imageCoctail.layer.cornerRadius = 15
+        }
+    }
+    
     @IBOutlet var informationLabel: UILabel!
     
     var coctail: Drink!

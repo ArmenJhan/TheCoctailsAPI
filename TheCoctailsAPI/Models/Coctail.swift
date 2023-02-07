@@ -6,53 +6,10 @@
 //
 
 enum Link: String {
-    case rick = "https://rickandmortyapi.com/api/character/108"
-    case wikiURL = "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/en.wikipedia/all-access/all-agents/Tiger_King/daily/20210901/20210930"
     case drinksURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a"
 }
 
-struct RickAndMorty: Decodable {
-    let name: String
-    let status: String
-    let species: String
-    let type: String
-    let gender: String
-    let location: Location
-    let image: String
-    let episode: [String]
-    let url: String
-}
 
-struct Location: Decodable {
-    let name: String
-    let url: String
-}
-
-
-
-struct Item: Decodable {
-    let project: String
-    let article: String
-    let granularity: String
-    let timestamp: String
-    let access: String
-    let agent: String
-    let views: Int
-    
-    var information: String {
-             """
-            project \(project)
-            article \(article)
-            granularity\(granularity)
-            timestamp\(timestamp)
-            access\(access)
-            """
-    }
-}
-
-struct Items: Decodable {
-    var items: [Item]
-}
 
 
 struct Drink: Decodable {
@@ -79,7 +36,7 @@ struct Drink: Decodable {
     let strIngredient15: String?
     
     var ingredient: String {
-        "Ingredients: \(strIngredient1 ?? ""), \(strIngredient2 ?? ""), \(strIngredient3 ?? ""), \(strIngredient4 ?? ""), \(strIngredient5 ?? ""), \(strIngredient6 ?? ""), \(strIngredient7 ?? ""), \(strIngredient8 ?? ""), \(strIngredient9 ?? ""), \(strIngredient10 ?? ""), \(strIngredient11 ?? ""), \(strIngredient12 ?? ""), \(strIngredient13 ?? ""), \(strIngredient14 ?? ""),\(strIngredient15 ?? ""), "
+        "Ingredients: \(strIngredient1 ?? "") \(strIngredient2 ?? "") \(strIngredient3 ?? "") \(strIngredient4 ?? "") \(strIngredient5 ?? "") \(strIngredient6 ?? "") \(strIngredient7 ?? "") \(strIngredient8 ?? "") \(strIngredient9 ?? "") \(strIngredient10 ?? "") \(strIngredient11 ?? "") \(strIngredient12 ?? "") \(strIngredient13 ?? "") \(strIngredient14 ?? "") \(strIngredient15 ?? "")"
     }
     
     var information: String {
