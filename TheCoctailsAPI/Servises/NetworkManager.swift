@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 enum NetworkError: Error  {
     case invalidURL
@@ -33,31 +34,16 @@ class NetworkManager {
             }
         }
     
-    func fetch<T: Decodable>(_ type: T.Type, from url: String?, with completion: @escaping(Result<T, NetworkError>) -> Void) {
-        guard let stringURL = url, let url = URL(string: stringURL) else {
-            completion(.failure(.invalidURL))
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                completion(.failure(.noData))
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            do {
-                let type = try JSONDecoder().decode(T.self, from: data)
-                DispatchQueue.main.async {
-                    completion(.success(type))
-                }
-            } catch let error {
-                completion(.failure(.decodingError))
+    func fetchCoctails(from url: String, completion: @escaping(Result<[Drink], AFError>) -> Void) {
+        AF.request(url).validate().responseJSON { dataResponse in
+            switch dataResponse.result {
+            case .success(let value):
+                let drinks = Drink.getDrinks(from: value)
+                completion(.success(drinks))
+            case .failure(let error):
+                completion(.failure(error))
                 print(error)
             }
-        }.resume()
+        }
     }
-    
-
-    
 }

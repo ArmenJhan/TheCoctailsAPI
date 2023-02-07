@@ -10,7 +10,7 @@ import UIKit
 class CoctailListViewController: UITableViewController {
     
     private var drink: Drinks?
-    private var coctails: [Drink] = []
+    private var drinks: [Drink] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,10 +47,10 @@ class CoctailListViewController: UITableViewController {
     
     
     func fetchData(from url: String?) {
-        NetworkManager.shared.fetch(Drinks.self, from: url) { [weak self] result in
+        NetworkManager.shared.fetchCoctails(from: Link.drinksURL.rawValue) { [weak self] result in
             switch result {
-            case .success(let drink):
-                self?.drink = drink
+            case .success(let drinks):
+                self?.drink?.drinks = drinks
                 self?.tableView.reloadData()
             case .failure(let error):
                 print(error)
