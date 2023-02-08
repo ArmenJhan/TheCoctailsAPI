@@ -15,13 +15,10 @@ class CoctailListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 80
-        fetchData(from: Link.drinksURL.rawValue)
+        fetchData()
     }
     
     // MARK: - Table view data source
-    
-    
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         drink?.drinks.count ?? 0
     }
@@ -46,11 +43,11 @@ class CoctailListViewController: UITableViewController {
     }
     
     
-    func fetchData(from url: String?) {
-        NetworkManager.shared.fetch(Drinks.self, from: url) { [weak self] result in
+    private func fetchData() {
+        NetworkManager.shared.fetchData(from: Link.drinksURL.rawValue) { [weak self] result in
             switch result {
-            case .success(let drink):
-                self?.drink = drink
+            case .success(let drinks):
+                self?.drink = drinks
                 self?.tableView.reloadData()
             case .failure(let error):
                 print(error)
@@ -58,7 +55,8 @@ class CoctailListViewController: UITableViewController {
         }
     }
     
-    func fetchImage(_ drink: Drink?,for image: UIImageView ) {
+
+    private func fetchImage(_ drink: Drink?,for image: UIImageView ) {
         NetworkManager.shared.fetchImage(from: drink?.strDrinkThumb) { result in
             switch result {
             case .success(let imageData):

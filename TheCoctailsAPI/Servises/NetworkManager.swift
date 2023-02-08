@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 enum NetworkError: Error  {
     case invalidURL
@@ -19,45 +20,32 @@ class NetworkManager {
     private init() {}
     
     func fetchImage(from url: String?, complition: @escaping(Result<Data, NetworkError>) -> Void) {
-            guard let url = URL(string: url ?? "") else {
-                complition(.failure(.invalidURL))
-                return
-            }
-            DispatchQueue.global().async {
-                guard let imageData = try? Data(contentsOf: url) else {
-                    complition(.failure(.noData))
-                    return }
-                DispatchQueue.main.async {
-                    complition(.success(imageData))
-                }
-            }
-        }
-    
-    func fetch<T: Decodable>(_ type: T.Type, from url: String?, with completion: @escaping(Result<T, NetworkError>) -> Void) {
-        guard let stringURL = url, let url = URL(string: stringURL) else {
-            completion(.failure(.invalidURL))
+        guard let url = URL(string: url ?? "") else {
+            complition(.failure(.invalidURL))
             return
         }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                completion(.failure(.noData))
-                print(error?.localizedDescription ?? "No error description")
-                return
+        DispatchQueue.global().async {
+            guard let imageData = try? Data(contentsOf: url) else {
+                complition(.failure(.noData))
+                return }
+            DispatchQueue.main.async {
+                complition(.success(imageData))
             }
-            
-            do {
-                let type = try JSONDecoder().decode(T.self, from: data)
-                DispatchQueue.main.async {
-                    completion(.success(type))
-                }
-            } catch let error {
-                completion(.failure(.decodingError))
-                print(error)
-            }
-        }.resume()
+        }
     }
     
-
+   
     
+    func fetchData(from url: String, completion: @escaping(Result<Drinks, AFError>) -> Void) {
+        AF.request(url)
+            .validate()
+            .responseDecodable(of: Drinks.self) { dataResponse in
+                switch dataResponse.result {
+                case .success(let value):
+                    completion(.success(value))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
 }
