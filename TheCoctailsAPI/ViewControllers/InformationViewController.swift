@@ -22,6 +22,7 @@ class InformationViewController: UIViewController {
     
     var coctail: Drink!
     
+    // MARK: Live Cercle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         title = coctail.strDrink
@@ -31,7 +32,7 @@ class InformationViewController: UIViewController {
     
     func fetchDrink(_ drink: Drink?) {
         
-        informationLabel.text = drink?.information2
+        informationLabel.text = drink?.strDrink
         
         NetworkManager.shared.fetchImage(from: drink?.strDrinkThumb) { [weak self] result in
             switch result {
@@ -42,17 +43,5 @@ class InformationViewController: UIViewController {
             }
         }
     }
-    
-    //    private func fetchData() {
-    //        NetworkManager.shared.fetch(Drinks.self, from: Link.drinksURL.rawValue) { [weak self] result in
-    //            switch result {
-    //            case .success(let drink):
-    //                self?.informationLabel.text = drink.information2
-    //            case .failure(let error):
-    //                print(error)
-    //            }
-    //        }
-    //    }
-    
 }
 

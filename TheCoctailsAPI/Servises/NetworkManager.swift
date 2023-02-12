@@ -34,15 +34,15 @@ class NetworkManager {
         }
     }
     
-   
-    
-    func fetchData(from url: String, completion: @escaping(Result<Drinks, AFError>) -> Void) {
+    func fetchData(from url: String, completion: @escaping(Result<[Drink], AFError>) -> Void) {
         AF.request(url)
             .validate()
-            .responseDecodable(of: Drinks.self) { dataResponse in
+            .responseJSON { dataResponse in
                 switch dataResponse.result {
                 case .success(let value):
-                    completion(.success(value))
+                    let drinks = Drink.getDrinks(from: value)
+                    completion(.success(drinks))
+                    print(drinks)
                 case .failure(let error):
                     completion(.failure(error))
                 }

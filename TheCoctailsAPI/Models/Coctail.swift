@@ -19,22 +19,22 @@ struct Drink: Decodable {
     let strInstructions: String
     let strDrinkThumb: String
     
-    var information: String {
-            """
-            Drink: \(strDrink)
-            Category: \(strCategory)
-            Alcoholic: \(strAlcoholic)
-            """
-    }
-    
-    var information2: String {
-             """
-            Drink: \(strDrink)
-            Category: \(strCategory)
-            Alcoholic: \(strAlcoholic)
-            Instructions: \(strInstructions)
-            """
-    }
+//    var information: String {
+//            """
+//            Drink: \(strDrink)
+//            Category: \(strCategory)
+//            Alcoholic: \(strAlcoholic)
+//            """
+//    }
+//    
+//    var information2: String {
+//             """
+//            Drink: \(strDrink)
+//            Category: \(strCategory)
+//            Alcoholic: \(strAlcoholic)
+//            Instructions: \(strInstructions)
+//            """
+//    }
     
     init(drinkData: [String: Any]) {
         strDrink = drinkData["strDrink"] as? String ?? ""
@@ -45,16 +45,9 @@ struct Drink: Decodable {
     }
     
     static func getDrinks(from value: Any) -> [Drink] {
-        guard let drinksData = value as? [[String: Any]] else { return [] }
-        
-        var drinks: [Drink] = []
-        
-        for drinkData in drinksData {
-            let drink = Drink(drinkData: drinkData)
-            drinks.append(drink)
-        }
-        
-        return drinks
+        guard let value = value as? [String: Any] else { return [] }
+        guard let drinks = value["drinks"] as? [[String: Any]] else { return []}
+        return drinks.compactMap { Drink(drinkData: $0)}
     }
 }
 

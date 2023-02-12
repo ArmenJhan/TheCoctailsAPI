@@ -8,10 +8,10 @@
 import UIKit
 
 class CoctailListViewController: UITableViewController {
-    
-    private var drink: Drinks?
+    // MARK: Private properties
     private var coctails: [Drink] = []
     
+    // MARK: Live Circle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 80
@@ -20,7 +20,7 @@ class CoctailListViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        drink?.drinks.count ?? 0
+        coctails.count
     }
     
     
@@ -28,9 +28,9 @@ class CoctailListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         guard let cell = cell as? CoctailTableViewCell else { return UITableViewCell() }
         
-        let drink = drink?.drinks[indexPath.row]
-        cell.configure(with: drink)
-
+        let coctail = coctails[indexPath.row]
+        cell.configure(with: coctail)
+        
         return cell
     }
     
@@ -39,15 +39,17 @@ class CoctailListViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let informationVC = segue.destination as? InformationViewController else { return }
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        informationVC.coctail = drink?.drinks[indexPath.row]
+        informationVC.coctail = coctails[indexPath.row]
     }
-    
-    
+}
+
+// MARK: Networking
+extension CoctailListViewController {
     private func fetchData() {
         NetworkManager.shared.fetchData(from: Link.drinksURL.rawValue) { [weak self] result in
             switch result {
             case .success(let drinks):
-                self?.drink = drinks
+                self?.coctails  = drinks
                 self?.tableView.reloadData()
             case .failure(let error):
                 print(error)
