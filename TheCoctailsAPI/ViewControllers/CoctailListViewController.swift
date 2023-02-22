@@ -16,6 +16,7 @@ class CoctailListViewController: UITableViewController {
         super.viewDidLoad()
         tableView.rowHeight = 80
         fetchData()
+        refreshControl()
     }
     
     // MARK: - Table view data source
@@ -41,16 +42,27 @@ class CoctailListViewController: UITableViewController {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         informationVC.coctail = coctails[indexPath.row]
     }
+    
+    //MARK: RefreshControl
+    private func refreshControl() {
+        refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Refresh")
+        refreshControl?.addTarget(self, action: #selector(fetchData), for: .valueChanged)
+    }
+    
 }
 
 // MARK: Networking
 extension CoctailListViewController {
-    private func fetchData() {
+   @objc private func fetchData() {
         NetworkManager.shared.fetchData(from: Link.drinksURL.rawValue) { [weak self] result in
             switch result {
             case .success(let drinks):
                 self?.coctails  = drinks
                 self?.tableView.reloadData()
+                if self?.refreshControl != nil {
+                    self?.refreshControl?.endRefreshing()
+                }
             case .failure(let error):
                 print(error)
             }

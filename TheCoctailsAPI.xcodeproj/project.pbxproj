@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C03699D82998FEF40027AF5C /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = C03699D72998FEF40027AF5C /* AlamofireImage */; };
 		C04372DF298D4FEC00450F96 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04372DE298D4FEC00450F96 /* NetworkManager.swift */; };
 		C04372E1298D5B2200450F96 /* CoctailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04372E0298D5B2200450F96 /* CoctailListViewController.swift */; };
 		C04372E3298D618F00450F96 /* CoctailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04372E2298D618F00450F96 /* CoctailTableViewCell.swift */; };
@@ -41,6 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0B766DC2992852700EB020E /* Alamofire in Frameworks */,
+				C03699D82998FEF40027AF5C /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +149,7 @@
 			name = TheCoctailsAPI;
 			packageProductDependencies = (
 				C0B766DB2992852700EB020E /* Alamofire */,
+				C03699D72998FEF40027AF5C /* AlamofireImage */,
 			);
 			productName = TheCoctailsAPI;
 			productReference = C08657CF298809D800477872 /* TheCoctailsAPI.app */;
@@ -178,6 +181,7 @@
 			mainGroup = C08657C6298809D800477872;
 			packageReferences = (
 				C0B766DA2992852700EB020E /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C03699D62998FEF40027AF5C /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			productRefGroup = C08657D0298809D800477872 /* Products */;
 			projectDirPath = "";
@@ -434,6 +438,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C03699D62998FEF40027AF5C /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		C0B766DA2992852700EB020E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -445,6 +457,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C03699D72998FEF40027AF5C /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C03699D62998FEF40027AF5C /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
 		C0B766DB2992852700EB020E /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C0B766DA2992852700EB020E /* XCRemoteSwiftPackageReference "Alamofire" */;

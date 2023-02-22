@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class InformationViewController: UIViewController {
     
@@ -34,14 +35,17 @@ class InformationViewController: UIViewController {
         
         informationLabel.text = drink?.strDrink
         
-        NetworkManager.shared.fetchImage(from: drink?.strDrinkThumb) { [weak self] result in
-            switch result {
-            case .success(let imageData):
-                self?.imageCoctail.image = UIImage(data: imageData)
-            case .failure(let error):
-                print(error)
-            }
-        }
+        guard let imageUrl = URL(string: drink?.strDrinkThumb ?? "") else {return}
+        imageCoctail.af.setImage(withURL: imageUrl)
+        
+//        NetworkManager.shared.fetchImage(from: drink?.strDrinkThumb) { [weak self] result in
+//            switch result {
+//            case .success(let imageData):
+//                self?.imageCoctail.image = UIImage(data: imageData)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class CoctailTableViewCell: UITableViewCell {
     
@@ -28,13 +29,16 @@ class CoctailTableViewCell: UITableViewCell {
         categoryLabel.text = "Category: \(drink?.strCategory ?? "")"
         alcpholicLabel.text = "Alcoholic: \(drink?.strAlcoholic ?? "")"
         
-        NetworkManager.shared.fetchImage(from: drink?.strDrinkThumb ) { [weak self] result in
-            switch result {
-            case .success(let imageData):
-                self?.drinkImage.image = UIImage(data: imageData)
-            case .failure(let error):
-                print(error)
-            }
-        }
+        guard let imageURL = URL(string: drink?.strDrinkThumb ?? "") else { return }
+        drinkImage.af.setImage(withURL: imageURL)
+        
+//        NetworkManager.shared.fetchImage(from: drink?.strDrinkThumb ) { [weak self] result in
+//            switch result {
+//            case .success(let imageData):
+//                self?.drinkImage.image = UIImage(data: imageData)
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
     }
 }
